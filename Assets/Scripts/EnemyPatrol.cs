@@ -8,14 +8,17 @@ public class EnemyPatrol : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public GameObject leftBorder;
     public GameObject rightBorder;
+    public Animator animator;
+    private Vector3 direction;
     public bool isRightDirection;
     public float speed;
-    void Update()
+    void FixedUpdate()
     {
-        if(isRightDirection)
+        direction = Vector3.zero;
+        if (isRightDirection)
         {
-            /*rigidbody.velocity = new Vector2(1 * speed, 0);*/
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+            rigidbody.velocity = new Vector2(1 * speed, 0);
             if (transform.position.x > rightBorder.transform.position.x)
             {
                 isRightDirection = !isRightDirection;
@@ -24,8 +27,7 @@ public class EnemyPatrol : MonoBehaviour
         }
         else
         {
-            /*rigidbody.velocity = new Vector2(-1 * speed, 0);*/
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            rigidbody.velocity = new Vector2(-1 * speed, 0);
             if (transform.position.x < leftBorder.transform.position.x)
             {
                 isRightDirection = !isRightDirection;
