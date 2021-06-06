@@ -24,5 +24,13 @@ public class CameraCntroller : MonoBehaviour
         {
             transform.Translate(Vector2.right * Time.deltaTime);
         }
+        if (Input.GetKey(KeyCode.KeypadPlus) && camera.orthographicSize>1)
+        {
+            camera.orthographicSize -= 1f * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.KeypadMinus))
+        {
+            camera.orthographicSize += 1f * Time.deltaTime;
+        }
     }
 }

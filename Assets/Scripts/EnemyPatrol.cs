@@ -5,34 +5,36 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     public Rigidbody2D rigidbody;
-    public SpriteRenderer spriteRenderer;
     public GameObject leftBorder;
     public GameObject rightBorder;
     public Animator animator;
-    private Vector3 direction;
+    public GroundDetection groundDetection;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private CollisionDamage collisionDamage;
     public bool isRightDirection;
     public float speed;
-    void FixedUpdate()
+    void Update()
     {
-        direction = Vector3.zero;
-        if (isRightDirection)
+        if(groundDetection.isGrounded)
         {
-
-            rigidbody.velocity = new Vector2(1 * speed, 0);
-            if (transform.position.x > rightBorder.transform.position.x)
+            if(transform.position.x > rightBorder.transform.position.x || collisionDamage.Direction < 0)
             {
-                isRightDirection = !isRightDirection;
-                spriteRenderer.flipX = !spriteRenderer.flipX;
+                isRightDirection = false;
             }
+            else if (transform.position.x < leftBorder.transform.position.x || collisionDamage.Direction > 0)
+            {
+                isRightDirection = true;
+            }
+            rigidbody.velocity = isRightDirection ? Vector2.right : Vector2.left;
+            rigidbody.velocity *= speed;
         }
-        else
+        if (rigidbody.velocity.x > 0)
         {
-            rigidbody.velocity = new Vector2(-1 * speed, 0);
-            if (transform.position.x < leftBorder.transform.position.x)
-            {
-                isRightDirection = !isRightDirection;
-                spriteRenderer.flipX = !spriteRenderer.flipX;
-            }
+            spriteRenderer.flipX = true;
+        }
+        if (rigidbody.velocity.x < 0)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 }

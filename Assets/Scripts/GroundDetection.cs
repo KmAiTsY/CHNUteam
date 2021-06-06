@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class GroundDetection : MonoBehaviour
 {
-    public bool isGrouded;
+    public bool isGrounded;
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrouded = true;
+            isGrounded = true;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrouded = false;
+            isGrounded = false;
         }
     }
     /*private void OnTriggerEnter2D(Collider2D collision)

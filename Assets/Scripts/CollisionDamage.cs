@@ -5,14 +5,31 @@ using UnityEngine;
 public class CollisionDamage : MonoBehaviour
 {
     public int damage = 10;
-    public string collisionTag;
-
-    private void OnCollisionEnter2D(Collision2D col)
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private Health health;
+    private float direction;
+    public float Direction
     {
-        if(col.gameObject.CompareTag(collisionTag))
+        get { return direction; }
+    }
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        health = col.gameObject.GetComponent<Health>();
+        if (health != null)
         {
-            Health health = col.gameObject.GetComponent<Health>();
+            direction = (col.transform.position - transform.position).x;
+            animator.SetFloat("Direction", Mathf.Abs(direction));
+        }
+    }
+    public void SetDamage()
+    {
+        if (health != null)
+        {
             health.TakeHit(damage);
         }
+        health = null;
+        direction = 0;
+        animator.SetFloat("Direction", 0f);
     }
 }

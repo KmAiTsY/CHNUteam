@@ -5,11 +5,11 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int health;
-    
+    public Animator animator;
     public void TakeHit(int damage)
     {
         health -= damage;
-        Debug.Log(health);
+        animator.SetTrigger("CollisionDamage");
         if (health <= 0)
         {
             Destroy(gameObject);
