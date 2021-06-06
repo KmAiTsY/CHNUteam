@@ -1629,7 +1629,7 @@ RectTransform:
   - {fileID: 910145781}
   - {fileID: 866573246}
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2479,12 +2479,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 295e251c3913cb64e997de60e27153c6, type: 3}
---- !u!20 &968493837 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7080434992757900693, guid: b55c2ec99fa6fa04e87d12d32d6932c3,
-    type: 3}
-  m_PrefabInstance: {fileID: 7080434992519658986}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &973860410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,7 +2900,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 968493837}
+  m_Camera: {fileID: 1542320894}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3454,18 +3448,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7080434992519658986}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1130901887 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7080434993689775178, guid: b55c2ec99fa6fa04e87d12d32d6932c3,
-    type: 3}
-  m_PrefabInstance: {fileID: 7080434992519658986}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1130901890 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7080434993689775223, guid: b55c2ec99fa6fa04e87d12d32d6932c3,
-    type: 3}
-  m_PrefabInstance: {fileID: 7080434992519658986}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1134334556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3833,36 +3815,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7fa47adea847c48ac13998e8fb1871, type: 3}
---- !u!1 &1287073998
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1287073999}
-  m_Layer: 0
-  m_Name: BulletSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1287073999
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287073998}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.089, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1130901887}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1305708171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2263419830351894784, guid: 5bc58bbd3d6733f4f84a5bd23a0ac33c,
@@ -4455,6 +4407,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f551205fb104d41b5d3e304c7dfa5b, type: 3}
+--- !u!20 &1542320894 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1542320894, guid: b55c2ec99fa6fa04e87d12d32d6932c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7080434992519658986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1603173575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5916,27 +5874,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7080434993689775221, guid: b55c2ec99fa6fa04e87d12d32d6932c3,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7080434993689775222, guid: b55c2ec99fa6fa04e87d12d32d6932c3,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 7112644528923369582, guid: 4614892a48e9a8448b1c0bd6728f83af,
-        type: 3}
-    - target: {fileID: 7080434993689775222, guid: b55c2ec99fa6fa04e87d12d32d6932c3,
-        type: 3}
-      propertyPath: boxCollider
-      value: 
-      objectReference: {fileID: 1130901890}
-    - target: {fileID: 7080434993689775222, guid: b55c2ec99fa6fa04e87d12d32d6932c3,
-        type: 3}
-      propertyPath: bulletSpawnPoint
-      value: 
-      objectReference: {fileID: 1287073999}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b55c2ec99fa6fa04e87d12d32d6932c3, type: 3}
 --- !u!1001 &7445837325205625417
@@ -5949,7 +5886,7 @@ PrefabInstance:
     - target: {fileID: 2252509243373550582, guid: fc9afe42569401244886f4151ccd2bc8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 41
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 2252509243373550582, guid: fc9afe42569401244886f4151ccd2bc8,
         type: 3}

@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public bool isJumping;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private float shootForce;
+    [SerializeField] private AudioSource audioSource;
     private UIPlayerController controller;
     private void Awake()
     {
@@ -94,8 +96,9 @@ public class Player : MonoBehaviour
     void Shoot()
     {
         animator.SetTrigger("Shoot");
+        audioSource.Play();
         GameObject prefab = Instantiate(bullet, bulletSpawnPoint.transform.position, Quaternion.identity);
-        prefab.GetComponent<Bullet>().SetImpulse(Vector2.right, spriteRenderer.flipX ? -force * 10 : force * 10);
+        prefab.GetComponent<Bullet>().SetImpulse(Vector2.right, spriteRenderer.flipX ? -force * shootForce : force * shootForce, gameObject);
     }
     void CheckFall()
     {

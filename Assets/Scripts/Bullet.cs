@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private TriggerDamage triggerDamage;
     [SerializeField] private float lifeTime;
     [SerializeField] private float force;
     public float Force
@@ -14,10 +14,10 @@ public class Bullet : MonoBehaviour
         get { return force; }
         set { force = value; }
     }
-    public void SetImpulse(Vector2 direction, float force)
+    public void SetImpulse(Vector2 direction, float force, GameObject parent)
     {
+        triggerDamage.Parent = parent;
         rigidbody.AddForce(direction * force, ForceMode2D.Impulse);
-        audioSource.Play();
         StartCoroutine(StartLife());
     }
 
