@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
+    public Transform transform;
     public Rigidbody2D rigidbody;
     public GameObject leftBorder;
     public GameObject rightBorder;
@@ -30,11 +31,11 @@ public class EnemyPatrol : MonoBehaviour
         }
         if (rigidbody.velocity.x > 0)
         {
-            spriteRenderer.flipX = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         if (rigidbody.velocity.x < 0)
         {
-            spriteRenderer.flipX = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

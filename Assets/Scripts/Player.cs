@@ -104,9 +104,8 @@ public class Player : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.R) || transform.position.y < minimalHeight) && isCheatMode)
         {
-            SceneManager.LoadScene(2);
-            /*rigidbody.velocity = new Vector2(0, 0);
-            transform.position = new Vector2(-9, 0);*/
+            rigidbody.velocity = new Vector2(0, 0);
+            transform.position = new Vector2(-5.45f, -0.56f);
         }
         else if (transform.position.y < minimalHeight && !isCheatMode)
         {

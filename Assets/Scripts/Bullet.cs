@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Rigidbody2D rigidbody;
-    [SerializeField] private TriggerDamage triggerDamage;
+    [SerializeField] private BulletDamage bulletDamage;
     [SerializeField] private float lifeTime;
     [SerializeField] private float force;
     public float Force
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     }
     public void SetImpulse(Vector2 direction, float force, GameObject parent)
     {
-        triggerDamage.Parent = parent;
+        bulletDamage.Parent = parent;
         rigidbody.AddForce(direction * force, ForceMode2D.Impulse);
         StartCoroutine(StartLife());
     }
