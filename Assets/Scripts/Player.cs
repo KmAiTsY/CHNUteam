@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private float shootForce;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private float shootTime;
     private UIPlayerController controller;
     private void Awake()
     {
