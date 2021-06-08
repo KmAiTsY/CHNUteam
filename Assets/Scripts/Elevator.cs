@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
-    public GameObject topBorder;
-    public GameObject bottomBorder;
+    public Transform finishBorder;
+    public Transform startBorder;
+    public Rigidbody2D rigidbody;
+    public bool direction;
     public float speed;
-    public bool isUpDirection;
-    // Update is called once per frame
     void FixedUpdate()
     {
-        if (isUpDirection)
+        if (direction)
         {
-            /*rigidbody.velocity = new Vector2(1 * speed, 0);*/
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
-            if (transform.position.y > topBorder.transform.position.y)
+            Vector2 movePosition = transform.position;
+            movePosition = Vector2.MoveTowards(transform.position, finishBorder.transform.position, speed * Time.deltaTime);
+            rigidbody.MovePosition(movePosition);
+            if (Vector2.Distance(transform.position, finishBorder.transform.position) < 0.2f)
             {
-                isUpDirection = !isUpDirection;
+                direction = !direction;
             }
         }
         else
         {
-            /*rigidbody.velocity = new Vector2(-1 * speed, 0);*/
-            transform.Translate(Vector2.down * speed * Time.deltaTime);
-            if (transform.position.y < bottomBorder.transform.position.y)
+            Vector2 movePosition = transform.position;
+            movePosition = Vector2.MoveTowards(transform.position, startBorder.transform.position, speed * Time.deltaTime);
+            rigidbody.MovePosition(movePosition);
+            if (Vector2.Distance(transform.position, startBorder.transform.position) < 0.2f)
             {
-                isUpDirection = !isUpDirection;
+                direction = !direction;
             }
         }
     }
