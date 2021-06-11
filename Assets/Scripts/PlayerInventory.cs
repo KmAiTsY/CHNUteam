@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public int silverNutsCount;
     public int goldNutsCount;
+    public int bulletCount;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {

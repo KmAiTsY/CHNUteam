@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rigidbody;
     public SpriteRenderer spriteRenderer;
     public BoxCollider2D boxCollider;
+    public BoxCollider2D legs;
     public GroundDetection groundDetection;
     public Animator animator;
     private Vector3 direction;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float shootForce;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float shootTime;
+    [SerializeField] PlayerInventory playerInventory;
     private UIPlayerController controller;
     private void Awake()
     {
@@ -62,27 +64,17 @@ public class Player : MonoBehaviour
         if (!isJumping && !groundDetection.isGrounded)
             animator.SetTrigger("StartFall");
         isJumping = isJumping && !groundDetection.isGrounded;
-#if UNITY_EDITOR
-        if (Input.GetKey(KeyCode.A))
-        {
-            direction = Vector3.left;
-            boxCollider.offset = new Vector2(0.158113f, -0.08469892f);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction = Vector3.right;
-            boxCollider.offset = new Vector2(-0.158113f, -0.08469892f);
-        }
-#endif
         if (controller.Left.IsPressed || Input.GetKey(KeyCode.A))
         {
             direction = Vector3.left;
-            boxCollider.offset = new Vector2(0.158113f, -0.08469892f);
+            boxCollider.offset = new Vector2(0.158113f, -0.08033466f);
+            legs.offset = new Vector2(0.158113f, -0.6283782f);
         }
         if (controller.Right.IsPressed || Input.GetKey(KeyCode.D))
         {
             direction = Vector3.right;
-            boxCollider.offset = new Vector2(-0.158113f, -0.08469892f);
+            boxCollider.offset = new Vector2(-0.158113f, -0.08033466f);
+            legs.offset = new Vector2(-0.158113f, -0.6283782f);
         }
         if (Input.GetKey(KeyCode.Escape))
             SceneManager.LoadScene(0);
@@ -96,17 +88,22 @@ public class Player : MonoBehaviour
     }
     void Shoot()
     {
-        animator.SetTrigger("Shoot");
-        audioSource.Play();
-        GameObject prefab = Instantiate(bullet, bulletSpawnPoint.transform.position, Quaternion.identity);
-        prefab.GetComponent<Bullet>().SetImpulse(Vector2.right, spriteRenderer.flipX ? -force * shootForce : force * shootForce, gameObject);
+        if (playerInventory.bulletCount > 0)
+        {
+            animator.SetTrigger("Shoot");
+            audioSource.Play();
+            GameObject prefab = Instantiate(bullet, bulletSpawnPoint.transform.position, Quaternion.identity);
+            prefab.GetComponent<Bullet>().SetImpulse(Vector2.right, spriteRenderer.flipX ? -force * shootForce : force * shootForce, gameObject);
+            playerInventory.bulletCount--;
+        }
     }
     void CheckFall()
     {
         if ((Input.GetKeyDown(KeyCode.R) || transform.position.y < minimalHeight) && isCheatMode)
         {
-            rigidbody.velocity = new Vector2(0, 0);
-            transform.position = new Vector2(-5.45f, -0.56f);
+            SceneManager.LoadScene(2);
+            /*rigidbody.velocity = new Vector2(0, 0);
+            transform.position = new Vector2(-5.45f, -0.56f);*/
         }
         else if (transform.position.y < minimalHeight && !isCheatMode)
         {

@@ -22,6 +22,18 @@ public class CollisionDamage : MonoBehaviour
             animator.SetFloat("Direction", Mathf.Abs(direction));
         }
     }
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        {
+            health = col.gameObject.GetComponent<Health>();
+            if (health != null)
+            {
+                direction = (col.transform.position - transform.position).x;
+                animator.SetFloat("Direction", Mathf.Abs(direction));
+            }
+        }
+    }
+
     public void SetDamage()
     {
         if (health != null)
