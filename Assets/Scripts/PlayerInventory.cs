@@ -13,22 +13,16 @@ public class PlayerInventory : MonoBehaviour
         if(collision.gameObject.CompareTag("SilverNut"))
         {
             silverNutsCount++;
-            Debug.Log(silverNutsCount);
-        }
-        if (collision.gameObject.CompareTag("GoldNut"))
-        {
-            goldNutsCount++;
-            Debug.Log(goldNutsCount);
-        }
-    }
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("SilverNut"))
-        {
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("GoldNut"))
         {
+            goldNutsCount++;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            bulletCount += 10;
             Destroy(collision.gameObject);
         }
     }

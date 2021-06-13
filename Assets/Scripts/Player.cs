@@ -19,14 +19,20 @@ public class Player : MonoBehaviour
     public bool isJumping;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private float shootForce;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float shootTime;
+    [SerializeField] private float laddingSpeed;
     [SerializeField] PlayerInventory playerInventory;
     private UIPlayerController controller;
     private void Awake()
     {
         Instance = this;
+    }
+    private void Start()
+    {
+        transform.position = playerSpawnPoint.transform.position;
     }
     void FixedUpdate()
     {
@@ -86,6 +92,14 @@ public class Player : MonoBehaviour
         if (direction.x < 0)
             spriteRenderer.flipX = true;
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder") && Input.GetKey(KeyCode.W))
+        {
+            animator.SetTrigger("Ladding");
+            rigidbody.velocity = Vector2.up * laddingSpeed;
+        }
+    }
     void Shoot()
     {
         if (playerInventory.bulletCount > 0)
@@ -101,9 +115,8 @@ public class Player : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.R) || transform.position.y < minimalHeight) && isCheatMode)
         {
-            SceneManager.LoadScene(2);
-            /*rigidbody.velocity = new Vector2(0, 0);
-            transform.position = new Vector2(-5.45f, -0.56f);*/
+            transform.position = playerSpawnPoint.transform.position;
+            rigidbody.velocity = new Vector2(0, 0);
         }
         else if (transform.position.y < minimalHeight && !isCheatMode)
         {

@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - SilverNut
   - GoldNut
+  - Ladder
+  - Bullet
   layers:
   - Default
   - TransparentFX

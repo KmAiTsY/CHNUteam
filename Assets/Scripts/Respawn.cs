@@ -18,7 +18,7 @@ public class Respawn : MonoBehaviour
     }
     void CheckFall()
     {
-        if(transform.position.y < -15)
+        if (transform.position.y < -15)
         {
             transform.position = new Vector3(x, y);
             rigidbody.velocity = new Vector2(0, 0);
