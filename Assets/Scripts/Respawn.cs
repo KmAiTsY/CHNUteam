@@ -6,6 +6,7 @@ public class Respawn : MonoBehaviour
 {
     public Transform transform;
     public Rigidbody2D rigidbody;
+    public float minimalHeight = -15f;
     float x, y;
     private void Start()
     {
@@ -18,7 +19,7 @@ public class Respawn : MonoBehaviour
     }
     void CheckFall()
     {
-        if (transform.position.y < -15)
+        if (transform.position.y < minimalHeight)
         {
             transform.position = new Vector3(x, y);
             rigidbody.velocity = new Vector2(0, 0);

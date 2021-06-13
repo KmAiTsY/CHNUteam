@@ -7,11 +7,12 @@ public class Player : MonoBehaviour
     public Transform transform;
     public Rigidbody2D rigidbody;
     public SpriteRenderer spriteRenderer;
-    public BoxCollider2D boxCollider;
+    public CapsuleCollider2D capsuleCollider;
     public BoxCollider2D legs;
     public GroundDetection groundDetection;
     public Animator animator;
     private Vector3 direction;
+    private int levelNumber;
     public float speed;
     public float force;
     public float minimalHeight;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         transform.position = playerSpawnPoint.transform.position;
+        levelNumber = SceneManager.GetActiveScene().buildIndex;
     }
     void FixedUpdate()
     {
@@ -73,13 +75,13 @@ public class Player : MonoBehaviour
         if (controller.Left.IsPressed || Input.GetKey(KeyCode.A))
         {
             direction = Vector3.left;
-            boxCollider.offset = new Vector2(0.158113f, -0.08033466f);
+            capsuleCollider.offset = new Vector2(0.158113f, -0.08033466f);
             legs.offset = new Vector2(0.158113f, -0.6283782f);
         }
         if (controller.Right.IsPressed || Input.GetKey(KeyCode.D))
         {
             direction = Vector3.right;
-            boxCollider.offset = new Vector2(-0.158113f, -0.08033466f);
+            capsuleCollider.offset = new Vector2(-0.158113f, -0.08033466f);
             legs.offset = new Vector2(-0.158113f, -0.6283782f);
         }
         if (Input.GetKey(KeyCode.Escape))
@@ -99,6 +101,21 @@ public class Player : MonoBehaviour
             animator.SetTrigger("Ladding");
             rigidbody.velocity = Vector2.up * laddingSpeed;
         }
+        if (collision.CompareTag("Portal"))
+        {
+            SceneManager.LoadScene(levelNumber+1);
+        }
+        if (collision.CompareTag("Spines"))
+        {
+            speed = 2f;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Spines"))
+        {
+            speed = 5f;
+        }
     }
     void Shoot()
     {
@@ -115,8 +132,8 @@ public class Player : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.R) || transform.position.y < minimalHeight) && isCheatMode)
         {
-            transform.position = playerSpawnPoint.transform.position;
-            rigidbody.velocity = new Vector2(0, 0);
+            SceneManager.LoadScene(levelNumber);
+            Time.timeScale = 1f;
         }
         else if (transform.position.y < minimalHeight && !isCheatMode)
         {

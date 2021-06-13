@@ -1,15 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Levels : MonoBehaviour
 {
-    [SerializeField] private GameObject[] levels;
-    void Update()
+    public Button[] buttons;
+    public void ButtonFunc()
     {
-        if (levels[1])
+        for (int i = 0; i < buttons.Length; i++)
         {
-
+            int temp = i;
+            buttons[i].onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene(temp + 2);
+            });
         }
     }
 }

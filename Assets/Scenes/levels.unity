@@ -281,7 +281,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 165485111}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133739771}
+        m_MethodName: ButtonFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &165485111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +361,6 @@ GameObject:
   - component: {fileID: 265021062}
   - component: {fileID: 265021061}
   - component: {fileID: 265021060}
-  - component: {fileID: 265021063}
   - component: {fileID: 265021064}
   m_Layer: 5
   m_Name: Level_01
@@ -422,8 +432,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 265021063}
-        m_MethodName: Level01
+      - m_Target: {fileID: 2133739771}
+        m_MethodName: ButtonFunc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -470,18 +480,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265021058}
   m_CullTransparentMesh: 0
---- !u!114 &265021063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265021058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290c8b7c2d4d13348b525610c5cee531, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &265021064
 Animator:
   serializedVersion: 3
@@ -739,7 +737,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 898397178}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133739771}
+        m_MethodName: ButtonFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &898397178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1279,7 +1288,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1668630535}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133739771}
+        m_MethodName: ButtonFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1668630535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,7 +1438,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1760736045}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133739771}
+        m_MethodName: ButtonFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1760736045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,9 +1688,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469a6ac51688ca241977c35821c69354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 265021058}
-  - {fileID: 898397175}
-  - {fileID: 1668630532}
-  - {fileID: 165485108}
-  - {fileID: 1760736042}
+  buttons:
+  - {fileID: 265021060}
+  - {fileID: 898397177}
+  - {fileID: 1668630534}
+  - {fileID: 165485110}
+  - {fileID: 1760736044}

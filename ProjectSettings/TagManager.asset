@@ -10,6 +10,8 @@ TagManager:
   - GoldNut
   - Ladder
   - Bullet
+  - Portal
+  - Spines
   layers:
   - Default
   - TransparentFX
