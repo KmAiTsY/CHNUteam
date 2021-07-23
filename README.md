@@ -1,4 +1,3 @@
-# CHNUteam #4
 Develop game "Escalation"<br>
 Latest [Release](https://github.com/KmAiTsY/CHNUteam/releases/tag/v0.1)
 > We're living the future so the present is our past.
